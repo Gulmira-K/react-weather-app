@@ -5,9 +5,8 @@ export default function Search() {
  
   return (
     <div className="Search">
-      <div className="col" id="search-form">
-        <form className="search-form">
-          <div className="form-row">
+      <form className="search-form">
+        <div className="form-row">
             <div className="col search-input">
               <input
                 type="text"
@@ -33,9 +32,8 @@ export default function Search() {
                 <i className="fas fa-map-marker-alt"> </i>
               </button>
             </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
