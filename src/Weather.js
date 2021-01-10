@@ -14,7 +14,7 @@ export default function Weather() {
       ready: true,
       date: new Date(response.data.dt * 1000),
       temperature: Math.round(response.data.main.temp),
-      fellslike: Math.round(response.data.main.feels_like),
+      feelslike: Math.round(response.data.main.feels_like),
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
       description: response.data.weather[0].description,
@@ -71,7 +71,7 @@ export default function Weather() {
    return (
       <Loader
          type="Puff"
-         color="#00BFFF"
+         color="#5A6268"
          height={100}
          width={100}
          timeout={3000}
