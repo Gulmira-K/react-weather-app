@@ -2,6 +2,7 @@ import React from "react";
 import "./Description.css";
 
 export default function Description() {
+  
   let weatherData = {
     city: "BARCELONA",
     description: "CLOUDY",

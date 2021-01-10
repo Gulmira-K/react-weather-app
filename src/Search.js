@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Search.css";
 import Description from "./Description";
 import Forecast from "./Forecast";
+ import Loader from 'react-loader-spinner'
 
 export default function Search() {
- 
+  const [weatherData, setWeatherData] = useState({ ready: false });
+
+
+ if (weatherData.ready) {
   return (
     <div className="Search">
       <form className="search-form">
@@ -41,5 +45,16 @@ export default function Search() {
       <br />
       <Forecast />
     </div>
-  );
+   );
+ } else {
+   return (
+      <Loader
+         type="Puff"
+         color="#00BFFF"
+         height={100}
+         width={100}
+         timeout={3000}
+      />
+     );;
+   }
 }
