@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Search.css";
+import "./Weather.css";
 import Description from "./Description";
 import Forecast from "./Forecast";
  import Loader from 'react-loader-spinner'
 
-export default function Search() {
+export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
 
