@@ -47,10 +47,10 @@ export default function Description(props) {
               </a>
             </li>
             <li>
-              Max: 15ºC
+              Max: {props.data.maxtemp}ºC
             </li>
             <li>
-              Min: 11ºC
+              Min: {props.data.mintemp}ºC
             </li>
           </ul>
         </div>

@@ -13,12 +13,14 @@ export default function Weather() {
     setWeatherData({
       ready: true,
       date: new Date(response.data.dt * 1000),
-      temperature: Math.round(response.data.main.temp),
-      feelslike: Math.round(response.data.main.feels_like),
-      humidity: response.data.main.humidity,
-      wind: Math.round(response.data.wind.speed),
-      description: response.data.weather[0].description,
       city: response.data.name,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      feelslike: Math.round(response.data.main.feels_like),
+      maxtemp: Math.round(response.data.main.temp_max),
+      mintemp: Math.round(response.data.main.temp_min),
+      temperature: Math.round(response.data.main.temp),
+      wind: Math.round(response.data.wind.speed),
     });
   }
 
