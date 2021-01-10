@@ -5,6 +5,7 @@
   margin-bottom: 20px;
   margin-left: 6px;
   text-align: left;
+  text-transform: capitalize;
 }
 .Description h2 {
   color: rgb(67, 101, 139);

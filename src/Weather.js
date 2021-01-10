@@ -2,11 +2,31 @@ import React, { useState } from "react";
 import "./Weather.css";
 import Description from "./Description";
 import Forecast from "./Forecast";
- import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
+import axios from "axios";
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const city = "Barcelona";
 
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      date: new Date(response.data.dt * 1000),
+      temperature: Math.round(response.data.main.temp),
+      fellslike: Math.round(response.data.main.feels_like),
+      humidity: response.data.main.humidity,
+      wind: Math.round(response.data.wind.speed),
+      description: response.data.weather[0].description,
+      city: response.data.name,
+    });
+  }
+
+  function search() {
+    const apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+}
 
  if (weatherData.ready) {
   return (
@@ -41,12 +61,13 @@ export default function Weather() {
         </div>
       </form>
       <br />
-      <Description />
+      <Description data={weatherData}/>
       <br />
       <Forecast />
     </div>
    );
  } else {
+   search();
    return (
       <Loader
          type="Puff"
@@ -55,6 +76,6 @@ export default function Weather() {
          width={100}
          timeout={3000}
       />
-     );;
+     );
    }
 }

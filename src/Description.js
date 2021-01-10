@@ -1,31 +1,24 @@
 import React from "react";
 import "./Description.css";
+import FormattedDate from "./FormattedDate";
 
-export default function Description() {
-  
-  let weatherData = {
-    city: "BARCELONA",
-    description: "CLOUDY",
-    date: "Friday 18 Dec",
-    hour: "08:12"
-  };
+export default function Description(props) {
 
-  return (
+    return (
     <div className="Description">
       <section className="header">
         <h1>
           <span id="current-city">
             {" "}
-            IT IS {weatherData.description} IN
+           {props.data.description} IN
             <br />
-            {weatherData.city}{" "}
+            {props.data.city}{" "}
           </span>
         </h1>
       </section>
       <div className="row">
         <div className="col-6  float-left current-date">
-          <h2 id="date">{weatherData.date}</h2>
-          <h2 id="hour">{weatherData.hour}</h2>
+          <FormattedDate date={props.data.date} />
         </div>
         <div className="col-6 float-right">
           <div className="clearfix">
@@ -42,7 +35,7 @@ export default function Description() {
         <div className="col-6 float-left">
           <ul className="current-weather">
             <li id="current-temp">
-              14º{" "}
+              {props.data.temperature}º{" "}
               <a href="/" id="celsius">
                 {" "}
                 C{" "}
@@ -64,13 +57,13 @@ export default function Description() {
         <div className="col-6 float-right">
           <ul className="current-condition">
             <li>
-              Feels like: 13ºC
+              Feels like: {props.data.feelslike}ºC
             </li>
             <li>
-              Humidity: 40%
+              Humidity: {props.data.humidity}%
             </li>
             <li>
-              Wind: 5km/h
+              Wind: {props.data.wind}km/h
             </li>
           </ul>
         </div>
