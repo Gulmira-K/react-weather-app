@@ -53,23 +53,23 @@ export default function Description() {
               </a>
             </li>
             <li>
-              Max: <span id="max-temp">15</span>ºC
+              Max: 15ºC
             </li>
             <li>
-              Min: <span id="min-temp">11</span>ºC
+              Min: 11ºC
             </li>
           </ul>
         </div>
         <div className="col-6 float-right">
           <ul className="current-condition">
             <li>
-              Feels like: <span id="feels-temp">13</span>ºC
+              Feels like: 13ºC
             </li>
             <li>
-              Humidity: <span id="humidity">40</span>%
+              Humidity: 40%
             </li>
             <li>
-              Wind: <span id="wind">5</span> km/h
+              Wind: 5km/h
             </li>
           </ul>
         </div>
