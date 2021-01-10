@@ -5,13 +5,9 @@
   margin-bottom: 20px;
   margin-left: 6px;
   text-align: left;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
-.Description h2 {
-  color: rgb(67, 101, 139);
-  font-size: 18px;
-  text-align: left;
-}
+
 ul {
   color: rgb(67, 101, 139);
   list-style-type: none;
