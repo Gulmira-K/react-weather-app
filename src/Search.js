@@ -1,5 +1,7 @@
 import React from "react";
 import "./Search.css";
+import Description from "./Description";
+import Forecast from "./Forecast";
 
 export default function Search() {
  
@@ -34,6 +36,10 @@ export default function Search() {
             </div>
         </div>
       </form>
+      <br />
+      <Description />
+      <br />
+      <Forecast />
     </div>
   );
 }
