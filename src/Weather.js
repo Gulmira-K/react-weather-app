@@ -5,10 +5,10 @@ import Forecast from "./Forecast";
 import Loader from 'react-loader-spinner';
 import axios from "axios";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const city = "Barcelona";
-
+  const [city, setCity] = useState(props.defaultCity);
+ 
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -30,19 +30,29 @@ export default function Weather() {
     axios.get(apiUrl).then(handleResponse);
 }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityInput(event) {
+    setCity(event.target.value);
+  }
+  
  if (weatherData.ready) {
   return (
     <div className="Search">
-      <form className="search-form">
+      <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-row">
             <div className="col search-input">
               <input
-                type="text"
+                type="search"
                 className="form-control"
                 placeholder="Enter a city"
                 autoComplete="off"
                 autoFocus="on"
                 id="city-input"
+                onChange={handleCityInput}
               />
             </div>
             <div className="col" id="search-btn">
