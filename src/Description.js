@@ -23,9 +23,9 @@ export default function Description(props) {
         <div className="col-6 float-right">
           <div className="clearfix">
             <img
-              src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-sun-behind-small-cloud-72dpi-forPersonalUseOnly.gif"
-              alt="Weather icon"
-              id="icon"
+                src={`${process.env.PUBLIC_URL}/icons/${props.data.icon}.svg`} 
+                alt="Weather icon"
+                id="icon"
             />
           </div>
         </div>

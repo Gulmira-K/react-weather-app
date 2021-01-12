@@ -18,9 +18,9 @@ ul {
 .Description #icon {
   color: gray;
   display: block;
-  margin: 5px;
-  width: 150px;
-}
+  margin: 0;
+  width: 160px;
+  }
 .current-date {
   padding-right: 0;
   padding-left: 20px;
