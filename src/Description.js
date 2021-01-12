@@ -1,6 +1,7 @@
 import React from "react";
 import "./Description.css";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function Description(props) {
 
@@ -34,17 +35,9 @@ export default function Description(props) {
       <div className="row">
         <div className="col-6 float-left">
           <ul className="current-weather">
-            <li id="current-temp">
-              {props.data.temperature}º{" "}
-              <a href="/" id="celsius">
-                {" "}
-                C{" "}
-              </a>{" "}
-              |
-              <a href="/" id="fahrenheit">
-                {" "}
-                F
-              </a>
+              <li id="current-temp">
+                <WeatherTemperature degree={props.data.temperature} />
+              
             </li>
             <li>
               Max: {props.data.maxtemp}ºC
