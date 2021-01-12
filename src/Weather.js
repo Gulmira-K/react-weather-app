@@ -26,7 +26,7 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
+    let apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 }
@@ -40,9 +40,23 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
   
+  function defineLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let units = "metric";
+    let apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse)
+  }
+
+  function getPosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(defineLocation);
+}
+
  if (weatherData.ready) {
   return (
-    <div className="Search">
+    <div className="Weather">
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-row">
             <div className="col search-input">
@@ -66,7 +80,8 @@ export default function Weather(props) {
             <div className="col" id="map-marker">
               <button
                 className="btn btn-secondary map-marker"
-                id="location-btn"
+              id="location-btn"
+              onClick={getPosition}
               >
                 <i className="fas fa-map-marker-alt"> </i>
               </button>
@@ -75,7 +90,6 @@ export default function Weather(props) {
       </form>
       <br />
       <Description data={weatherData}/>
-      <br />
       <Forecast />
     </div>
    );

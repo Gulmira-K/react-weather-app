@@ -30,7 +30,7 @@ export default function Description(props) {
           </div>
         </div>
       </div>
-      <br />
+      
       <div className="row">
         <div className="col-6 float-left">
           <ul className="current-weather">
