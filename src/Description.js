@@ -36,7 +36,10 @@ export default function Description(props) {
         <div className="col-6 float-left">
           <ul className="current-weather">
               <li id="current-temp">
-                <WeatherTemperature degree={props.data.temperature} />
+                <WeatherTemperature
+                  unit={props.unit}
+                  setUnit={props.setUnit}
+                  celsius={props.data.temperature}/>
               
             </li>
             <li>

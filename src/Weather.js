@@ -8,7 +8,8 @@ import axios from "axios";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
- 
+  const [unit, setUnit] = useState("celsius");
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -26,8 +27,9 @@ export default function Weather(props) {
   }
 
   function search() {
+    let unit = "metric";
     let apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(handleResponse);
 }
 
@@ -89,8 +91,8 @@ export default function Weather(props) {
         </div>
       </form>
       <br />
-      <Description data={weatherData}/>
-      <Forecast />
+      <Description data={weatherData} unit={unit} setUnit={setUnit}/>
+      <Forecast city={weatherData.city} unit={unit}/>
     </div>
    );
  } else {

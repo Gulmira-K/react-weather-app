@@ -1,60 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Forecast.css";
+import ForecastPreview from "./ForecastPreview";
+import axios from "axios";
 
-export default function Forecast() {
-  return (
-    <div className="Forecast">
-      <div className="row row-cols-5">
-        <div className="col forecast-info">
-          <h5 id="day-one">09:00</h5>
+export default function Forecast(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, sertForecast] = useState(null);
 
-          <img
-            src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-cloud-72dpi-forPersonalUseOnly.gif"
-            alt="Cloudy"
-            className="forecast-icon"
-          />
-          <p className="degrees">16ºC</p>
-        </div>
-        <div className="col  forecast-info">
-          <h5 id="day-two">12:00</h5>
-          <img
-            src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-cloud-72dpi-forPersonalUseOnly.gif"
-            alt="Cloudy"
-            className="forecast-icon"
-          />
-          <p className="degrees">17ºC</p>
-        </div>
-        <div className="col  forecast-info">
-          <h5 id="day-three">15:00</h5>
+  function handleForecastResponse(response) {
+    sertForecast(response.data);
+    setLoaded(true);
+  }
 
-          <img
-            src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-cloud-with-rain-72dpi-forPersonalUseOnly.gif"
-            alt="Rainy"
-            className="forecast-icon"
-          />
-          <p className="degrees">13ºC</p>
-        </div>
-        <div className="col  forecast-info">
-          <h5 id="day-four">18:00</h5>
-
-          <img
-            src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-sun-behind-small-cloud-72dpi-forPersonalUseOnly.gif"
-            alt="Mainly Cloudy"
-            className="forecast-icon"
-          />
-          <p className="degrees">11ºC</p>
-        </div>
-        <div className="col  forecast-info">
-          <h5 id="day-five">21:00</h5>
-
-          <img
-            src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/emoji-3d%20icons-glossy-3d-icons-sun-behind-small-cloud-72dpi-forPersonalUseOnly.gif"
-            alt="Mainly Cloudy"
-            className="forecast-icon"
-          />
-          <p className="degrees">12ºC</p>
+  if (loaded) {
+    return (
+      <div className="Forecast">
+        <div className="row row-cols-5">
+          {/* 2 options to build forecast */}
+         {/* {forecast.list.slice(0, 4).map(function (forecastItem) { return <ForecastPreview data={forecastItem} />;})} */}
+        <ForecastPreview data={forecast.list[0]} unit={props.unit}/>
+        <ForecastPreview data={forecast.list[1]} unit={props.unit}/>
+        <ForecastPreview data={forecast.list[2]} unit={props.unit}/>
+        <ForecastPreview data={forecast.list[3]} unit={props.unit}/>
+        <ForecastPreview data={forecast.list[4]} unit={props.unit}/>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let apiKey = "e78ccf6f31ad51ffa9f2549f7ec140cb";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&appid=${apiKey}&units=metric`;
+    axios(apiUrl).then(handleForecastResponse);
+  } return null;
+  
 }
