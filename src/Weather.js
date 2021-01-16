@@ -56,9 +56,9 @@ export default function Weather(props) {
     navigator.geolocation.getCurrentPosition(defineLocation);
 }
 
- if (weatherData.ready) {
-  return (
-    <div className="Weather">
+  if (weatherData.ready) {
+    return (
+     <div className="Weather">
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-row">
             <div className="col search-input">
